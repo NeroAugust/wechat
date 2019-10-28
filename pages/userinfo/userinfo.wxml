@@ -1,0 +1,87 @@
+<!--pages/usrinfo/userinfo.wxml-->
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px'>
+  <view class='title_icon'>
+      <view mode='aspectFit' class='back' bindtap='navBack'>
+        <view class="cuIcon-back">返回
+      </view>
+    </view>
+  </view>
+  <view class='title_text'>
+    {{title_index}}
+  </view>
+</view>
+
+<view>
+  <!-- 昵称 -->
+<view class="cu-form-group">
+		<view class="title">昵称</view>
+		<input placeholder="请输入呢称" bindinput="setNickname" class="text-right" value="{{nickname}}"></input>
+</view>
+<!-- 头像 -->
+<view class="cu-bar bg-white margin-top" style="margin-top:3px">
+		<view class="action">
+			头像
+		</view>
+		<view class="action">
+			{{imgList.length}}
+		</view>
+	</view>
+<view class="cu-form-group">
+		<view class="grid col-2 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+<!-- 手机号码 -->
+<view class="cu-form-group margin-top" style="margin-top:3px">
+		<view class="title">手机号码</view>
+		<input placeholder="请输入手机号"  class="text-right" disabled="disabled" value="{{mobile}}"></input>
+</view>
+</view>
+
+<!-- 隐藏 -->
+<view wx:if="{{target=='showmodel'?true:false}}">
+  <view class="cu-form-group" style="margin-top:3px">
+		<view class="title">新号码</view>
+		<input placeholder="请输入新手机号码" bindinput="setNewMobile" value="{{newMobile}}" class="text-right"></input>
+	</view>
+	<view class="cu-form-group" style="margin-top:3px">
+		<view class="title">密码</view>
+		<input placeholder="请输入密码" bindinput="setPwd" type="password"value="{{password}}" class="text-right"></input>
+	</view>
+  <view class="cu-form-group" style="margin-top:3px">
+		<view class="title">图片验证码</view>
+    <input placeholder="请输入验证码" bindinput="setcaptcha_code" value="{{captcha_code}}" class="text-right"></input>
+    <image src="{{imgUrl}}" mode="aspectFit" style="width:20%;height:50px"></image>
+    <button  class="bg-green cu-btn shadow" bindtap="getCaptcha" data-target="Captcha">显示</button>
+	</view>
+  <!-- 短信验证码 -->
+<view class="cu-form-group" style="margin-top:3px">
+		<view class="title">短信验证码</view>
+		<input placeholder="请输入短信验证码" bindinput="setPhoneCaptcha" value="{{phoneCaptcha}}" class="text-right"></input>
+    <button  class="bg-green cu-btn shadow" bindtap="getPhoneCaptcha" data-target="Captcha">获取</button>
+</view>
+    <button  class="bg-green" style="margin:15px 10px" bindtap="confirm">确认修改</button>
+</view>
+
+
+<!-- 按钮 -->
+  <view style="width:100%;height:80px;background:#f1f1f1;z-index:13;position:fixed;bottom:0px">
+  <view style="display:flex;position:fixed;bottom:15px;width:100%;margin:10px 0;z-index:10">
+  <button class="cu-btn block line-green lg" style="width:46%;margin-left:3%"
+  bindtap="modifyuserinfo">
+    <text class="cuIcon-post"></text> 昵称头像
+  </button>
+  <button class="cu-btn block line-green lg" style="width:46%;margin-left:2%" bindtap="modifymobile" data-target="showmodel">
+    <text class="cuIcon-add"></text> 手机号码
+  </button>
+ </view>
+</view>

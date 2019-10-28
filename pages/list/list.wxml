@@ -1,0 +1,77 @@
+<!--pages/list/list.wxml-->
+
+<import src="../../component/footermenu/footermenu.wxml" />
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px;position:fixed;z-index:11;top:0'>
+  <view class='title_icon'>
+      <view mode='aspectFit' class='back'  bindtap="showModal" data-target="DrawerModalL">
+        <view class="cuIcon-share">
+      </view>
+    </view>
+  </view>
+ <view class='title_text' style="display:flex; justify-content: center;align-items: center;">
+   {{title_text}}
+  </view>
+</view>
+
+
+<!-- 日榜/月榜/年榜 -->
+<!-- 支出/收入 -->
+<scroll-view scroll-x class="bg-green nav text-center" style='position:fixed;top:{{navH}}px'>
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0" style="margin: 0 30px"
+  data-flag="isday">
+    日榜
+  </view>
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1" style="margin: 0 30px"
+  data-flag="ismonth">
+    月榜
+  </view>
+  <view class="cu-item {{2==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2" style="margin: 0 30px"
+  data-flag="isyear">
+    年榜
+  </view>
+</scroll-view>
+
+<!-- 内容 -->
+<view class="container" style="margin-top:{{navH+50}}px">
+  <view class="cu-bar bg-white search"  wx-if="{{isflag==\"isday\"?true:false}}" style="border-top:1px solid #f3f3f3" wx:for="{{list}}" wx:key>
+    <view class="cu-avatar round" style="background-color;#aaaaaa">
+      <view class="cuIcon-people"></view>
+    </view>
+    <view class="content" style>
+      {{index+1}}.{{item.name}}
+    </view>
+    <view class="action">
+      <text class="num">{{item.num}}人</text>
+    </view>
+  </view>
+
+   <view class="cu-bar bg-white search"  wx-if="{{isflag=='ismonth'?true:false}}" style="border-top:1px solid #f3f3f3" wx:for="{{list1}}" wx:key>
+    <view class="cu-avatar round" style="background-color;#aaaaaa">
+      <view class="cuIcon-people "></view>
+    </view>
+    <view class="content" style>
+      {{index+1}}.{{item.name}}
+    </view>
+    <view class="action">
+      <text class="num">{{item.num}}人</text>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white search"  wx-if="{{isflag=='isyear'?true:false}}" style="border-top:1px solid #f3f3f3" wx:for="{{list2}}" wx:key>
+    <view class="cu-avatar round" style="background-color;#aaaaaa">
+      <view class="cuIcon-people "></view>
+    </view>
+    <view class="content" style>
+      {{index+1}}.{{item.name}}
+    </view>
+    <view class="action">
+      <text class="num">{{item.num}}人</text>
+    </view>
+  </view>
+
+  
+</view>
+
+<!-- 底部框 -->
+<template is ="footermenu"></template>

@@ -1,0 +1,146 @@
+<!--index.wxml-->
+<import src="../../component/footermenu/footermenu.wxml" />
+
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px;position:fixed;z-index:11;top:0'>
+  <view class='title_icon'>
+    <view mode='aspectFit' class='back'  bindtap="showModal" data-target="DrawerModalL">
+      <view class="cuIcon-list">
+      </view>
+    </view>
+  </view>
+<!-- 侧边栏 -->
+<view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal" style="top:{{navH+135}}px;bottom:50px;z-index:18">
+  <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+    <view class="cu-bar bg-white solid-bottom" style="top:0px;height:50px">
+      <view class="action">
+        <text class="cuIcon-titles text-green"></text> 切换账本明细
+      </view>
+    </view>
+    <!-- <template is ="sidebar"></template> -->
+
+
+<!-- 账户信息 -->
+<view wx:for="{{allBookList}}" wx:key bindtap="chooseBook" data-bookid="{{item.id}}">
+  <view class="cu-list menu text-left" >
+    <view class="cu-item arrow">
+      <view class="content" style="display:flex" decode="true">
+        <view class="action text-grey">
+          <view class="cuIcon-profile"></view>
+        </view>
+        <view style="color:grey ">{{allBookList[index].name}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+    <button class="cu-btn block line-green lg" style="margin:0 5%;height:30px;width:90%;bottom:30px;position:fixed" bindtap="toBookSetting">
+    <text class="cuIcon-settings"></text> 账簿设置</button>
+  </view>
+</view>
+  <view class='title_text'>
+    {{title_index}}
+  </view>
+</view>
+<!-- 头部信息 -->
+<view class="header-index" style='position:fixed;top:{{navH}}px;z-index:12'>
+  <view class="header-index-detail">
+  <view class="header-index-moudle">
+    <picker mode="date" value="{{mouth}}" start="2015-09" end="2019-11"         bindchange="bindDateChange" fields="month">
+      <view class="header-index-moudle-title">{{year}}</view>
+      <view class="header-index-moudle-info">
+        <view class="info-big">{{month}}</view>
+        <view class="info-little">月</view>
+        <!-- 3角图标 -->
+        <view class="actioner text-white">
+          <view class="cuIcon-triangledownfill"></view>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="header-index-moudle">
+    <view class="header-index-moudle-title">收入</view>
+    <view class="header-index-moudle-info">
+      <view class="info-big">{{income}}</view>
+      <view class="info-little">{{income1}}</view>
+    </view>
+  </view>
+  <view class="header-index-moudle">
+    <view class="header-index-moudle-title">支出</view>
+    <view class="header-index-moudle-info">
+      <view class="info-big">{{pay}}</view>
+      <view class="info-little">{{pay1}}</view>
+    </view>
+  </view>
+  </view>
+</view>
+<!-- 上部框 -->
+<view class="cu-bar tabbar margin-bottom-xl bg-white" style='position:fixed;top:{{navH+80}}px;z-index:12;width:100%'>
+    <view class="action text-grey" bindtap="goCategroySettings">
+      <view class="cuIcon-apps"></view>
+    </view>
+    <view class="action text-gray">
+      <view class="cuIcon-form"></view>
+    </view>
+    <view class="action text-gray">
+      <view class="cuIcon-wenzi"></view>
+    </view>
+    <view class="action text-gray">
+      <view class="cuIcon-pic">
+      </view>
+    </view>
+    <view class="action text-gray">
+      <view class="cuIcon-barcode">
+      </view>
+    </view>
+</view>
+
+<!-- 内容 -->
+<view class="container" style="display:flex;flex-direction:column;margin-top:{{navH+135}}px;margin-bottom:50px;width:100%">
+<view wx:for="{{bookDetailList}}" wx:key>
+  <view class="cu-bar bg-gray text-grey" style="height:25px;line-height:25px;font-size:12px;min-height:25px;width:100%;color:#acacac">
+    <view class="cu-bar time" style="margin-left:10px">
+      <view class="day">{{date}}</view>       
+      <view class="week">星期{{day}}</view>
+    </view>
+    <!-- <view class="cu-bar dayinfo" style="margin-right:10px">
+      <view class="dayincome">收入:0.00</view>
+      <view class="daypay">支出:30.00</view>
+    </view> -->
+  </view>
+  <!-- 左滑列表 -->
+ <view class="cu-list menu-avatar">
+    <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}"  bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}"  style="border-bottom:1px solid #f1f1f1;height:60px;line-height:50px">
+      
+      <view class="cu-avatar round" style="margin-left:5px;background:#fafafa">
+        <view class="action text-green">
+          <view class="cuIcon-profile"></view>
+        </view>
+      </view>
+      <view class="content">
+        <view style="color:grey ">{{item.company_name}}</view>
+      </view>
+      <view class="action" style="width:80px">
+        <view class="action text-grey" style="width:80px">
+          <!-- <view class="cuIcon-sort"></view> -->
+           <view style="color:{{item.type==1?'#6fb34b':'#eb3223'}};display:flex;float:right">
+           <view wx:if="{{item.type==2}}">-
+           </view>
+           {{item.total_money}}</view>
+        </view>
+      </view>
+      <view class="move">
+        <view class="bg-olive" bindtap="toDetailBill" data-id="{{item.id}}">详情</view>
+        <view class="bg-red" bindtap="deleteBill"
+        data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+</view>
+
+  
+
+<!-- 底部框 -->
+<template is ="footermenu" style="z-index:20"></template>
+

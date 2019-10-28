@@ -1,0 +1,78 @@
+<!--pages/booksetting/booksetting.wxml-->
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px;position:fixed;top:0px'>
+  <view class='title_icon'>
+      <view mode='aspectFit' class='back'  bindtap="navBack">
+        <view class="cuIcon-back" bindtap="navBack">返回
+      </view>
+    </view>
+  </view>
+ <view class='title_text' style="display:flex; justify-content: center;align-items: center;">
+   {{title_text}}
+  </view>
+</view>
+
+
+<!-- <view class="cu-bar bg-white solid-bottom" style="top:{{navH}}px;height:50px;background:#f1f1f1;position:fixed;z-index:11;width:100%">
+    <view class="action">
+      <text class="cuIcon-titles text-green"></text> 首页默认加载排序第一的账本明细
+    </view>
+</view> -->
+    <!-- 左滑列表 -->
+
+
+<!-- 左滑列表 -->
+ <view class="cu-list menu-avatar" style="position:relative;margin-top:{{navH}}px">
+    <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{allBookList}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}"  style="border-bottom:1px solid #f1f1f1;height:60px;line-height:50px">
+      
+      <view class="cu-avatar round" style="margin-left:15px">
+        <view class="action text-grey">
+          <view class="cuIcon-profile"></view>
+        </view>
+      </view>
+      <view class="content">
+        <view style="color:grey ">{{item.name}}</view>
+      </view>
+      <view class="action">
+        <view class="action text-grey">
+          <view class="cuIcon-sort"></view>
+        </view>
+      </view>
+      <view class="move">
+        <!-- <view class="bg-grey" bindtap="showModal"  data-categroyid="{{categroylist[index].id}}">修改</view> -->
+        <view class="bg-red" bindtap="deleteBook" data-bookid="{{allBookList[index].id}}"
+        data-target="deleteBook">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+<view style="width:100%;height:80px;background:#f1f1f1;z-index:13;position:fixed;bottom:0px">
+  <view style="display:flex;position:fixed;bottom:15px;width:100%;margin:10px 0;z-index:10">
+  <button class="cu-btn block line-gray lg" style="width:46%;margin-left:3%">
+    <text class="cuIcon-post"></text> 保存排序
+  </button>
+  <button class="cu-btn block line-green lg" style="width:46%;margin-left:2%" bindtap="showModal"
+  data-target="bottomModal">
+    <text class="cuIcon-add"></text> 添加账簿
+  </button>
+ </view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" style="z-index:100">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green" bindtap="addBook">确定</view>
+      <view class="action text-blue" bindtap="hideModal">取消</view>
+    </view>
+    <!-- <view class="padding-xl"> -->
+     
+      <view class="cu-form-group" style="border:1rpx solid #f1f1f1">
+		  <view class="title">类别</view>
+		  <input class="text-right"placeholder="类别名称建议控制在6个字符以内" bindinput="setBookName" value="{{bookName}}"></input>
+	  </view>
+    <!-- </view> -->
+  </view>
+</view>
+
+

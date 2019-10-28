@@ -1,0 +1,100 @@
+<!--pages/post/post.wxml-->
+
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px'>
+  <view class='title_icon' >
+      <view mode='aspectFit' class='back' bindtap='goBack'>
+        <view class="cuIcon-back">返回
+      </view>
+    </view>
+  </view>
+ <view class='title_text' style="display:flex; justify-content: center;align-items: center;">
+   {{title_text}}
+  </view>
+</view>
+
+<!-- 支出/收入 -->
+<scroll-view scroll-x class="bg-white nav text-center" style='position:fixed;top:{{navH}}px;background:white'>
+  <view class="cu-item {{1==TabCur?'text-green cur':''}}" bindtap="tabSelect" data-id="1" style="margin: 0 30px">
+    收入
+  </view>
+  <view class="cu-item {{2==TabCur?'text-green cur':''}}" bindtap="tabSelect" data-id="2" style="margin: 0 30px">
+    支出
+  </view>
+</scroll-view>
+
+<view class="container " style="position:fixed;top:{{navH+50}}px;width:100%">
+<view class="cu-list grid col-4">
+  <view class="cu-item" wx:for="{{categroylist}}" wx:key>
+  <view data-categroyid="{{categroylist[index].id}}" bindtap="showModal"
+  data-target="bottomModal">
+    <text class="cuIcon-profile lg text-gray"></text>
+    <text>{{categroylist[index].name}}</text>
+  </view>  
+  </view>
+</view>
+</view>
+
+<!-- 记账的弹窗 -->
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green" bindtap="bookkeeping">确定</view>
+      <view class="action text-blue" bindtap="hideModal">取消</view>
+    </view>
+    <view class="padding-xl">
+      <!-- 记账金额 -->
+      <view class="cu-form-group">
+		    <view class="title">记账金额</view>
+		    <input class="text-right" bindinput="setTotalMoney" placeholder="记账金额" value="{{total_money}}" ></input>
+	    </view>
+      <!-- 金额 -->
+      <view class="cu-form-group">
+		    <text class="title" decode='true'>金&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额</text>
+		    <input class="text-right" bindinput="setMoney" placeholder="获取金额" value="{{money}}"></input>
+	    </view>
+      <!-- 日期选择 -->
+      <view class="cu-form-group">
+		    <view class="title">日期选择</view>
+		    <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+			    <view class="picker">
+            {{date}}
+          </view>
+		    </picker>
+	    </view>
+      <!-- 交易对象 -->
+      <view class="cu-form-group">
+		    <view class="title">交易对象</view>
+		    <input class="text-right" bindinput="setTotalMoney" placeholder="可为空" bindinput="setTrader" value="{{trader}}"></input>
+	    </view>
+      <!-- 备注 -->
+      <view class="cu-form-group">
+		    <text class="title" decode='true'>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</text>
+		    <input class="text-right" bindinput="setTotalMoney" placeholder="可为空" bindinput="setRemark" value="{{remark}}"></input>
+	    </view>
+      <!-- 图片 -->
+      <view class="cu-bar bg-white margin-top">
+		    <view class="action">图片上传</view>
+		    <view class="action">{{imgList.length}}/4</view>
+	    </view>
+      <view class="cu-form-group">
+		    <view class="grid col-4 grid-square flex-sub">
+			    <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+				    <image style="top:0;left:0"  src='{{imgList[index]}}' mode='aspectFill'></image>
+				    <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					    <text class="cuIcon-close"></text>
+				    </view>
+			    </view>
+			    <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+				    <text class="cuIcon-cameraadd"></text>
+			    </view>
+		    </view>
+	    </view>
+      
+
+
+
+
+    </view>
+  </view>
+</view>

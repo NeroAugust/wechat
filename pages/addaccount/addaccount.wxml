@@ -1,0 +1,62 @@
+<!--pages/addaccount/addaccount.wxml-->
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px;position:fixed;top:0px'>
+  <view class='title_icon'>
+      <view mode='aspectFit' class='back'  bindtap="navBack">
+        <view class="cuIcon-back">返回
+      </view>
+    </view>
+  </view>
+ <view class='title_text' style="display:flex; justify-content: center;align-items: center;">
+   {{title_text}}
+  </view>
+</view>
+
+<!-- <view class="cu-form-group" style="margin-top:{{navH}}px">
+		
+</view> -->
+<view class="cu-form-group" style="margin-top:{{navH+15}}px">
+		<view class="title">名称</view>
+		<input placeholder="            最多4个字符" bindinput="setAccountName"></input>
+	</view>
+
+  <view class="cu-form-group">
+		<view class="title">类型</view>
+		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+			<view class="picker">
+				{{index?picker[index]:'请选择'}}
+			</view>
+		</picker>
+	</view>
+
+  <view class="cu-form-group">
+		<view class="title">初始余额</view>
+		<input placeholder="      可不填,默认为0" bindinput="setInitialBalance"></input>
+	</view>
+
+  <view class="cu-form-group">
+		<view class="title">备注</view>
+		<input placeholder="            可不填" bindinput="setRemark"></input>
+	</view>
+
+  <button  class="bg-green" style="margin:15px 10px" bindtap="addaccount" data-target="addaccount">提交</button>
+
+<!-- 添加账本弹窗 -->
+<view class="cu-modal {{modalName=='addaccount'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{modalName}}</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      {{modalContent}}
+    </view>
+  </view>
+</view>
+
+
+
+
+

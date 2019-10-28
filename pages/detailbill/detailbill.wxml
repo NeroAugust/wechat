@@ -1,0 +1,74 @@
+<!--pages/detailbill/detailbill.wxml-->
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px'>
+  <view class='title_icon' >
+      <view mode='aspectFit' class='back' bindtap='navBack'>
+        <view class="cuIcon-back">返回
+      </view>
+    </view>
+  </view>
+ <view class='title_text' style="display:flex; justify-content: center;align-items: center;">
+   {{title_text}}
+  </view>
+</view>
+
+<view>
+<!-- 用户 -->
+  <view class="cu-form-group">
+    <text class="title" decode='true'>用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户</text>
+    <input class="text-right" disabled="disabled" placeholder="记账金额" value="{{user_nickname}}"></input>
+  </view>
+<!-- 支出/收入 -->
+  <view class="cu-form-group">
+    <view class="title">类别</view>
+    <input class="text-right" disabled="disabled" placeholder="记账金额" value="{{category_name}}"></input>
+  </view>
+  <!-- 金额 -->
+  <view class="cu-form-group">
+    <text class="title" decode='true'>金&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额</text>
+    <input class="text-right" bindinput="setMoney" placeholder="获取金额" value="{{total_money}}" disabled="{{change==0?'disabled':''}}"></input>
+  </view>
+  <!-- 日期选择 -->
+  <view class="cu-form-group">
+    <text class="title" decode='true'>日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期</text>
+    <picker mode="date" value="{{date}}" start="2015-09-01" disabled="disabled" end="2020-09-01" bindchange="DateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <!-- 交易对象 -->
+  <view class="cu-form-group">
+    <view class="title">交易对象</view>
+    <input class="text-right" bindinput="setCompanyName" placeholder="可为空"  value="{{company_name}}" disabled="{{change==0?'disabled':''}}"></input>
+  </view>
+  <!-- 备注 -->
+  <view class="cu-form-group">
+    <text class="title" decode='true'>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</text>
+    <input class="text-right" placeholder="可为空" bindinput="setRemark" value="{{remark}}" disabled="{{change==0?'disabled':''}}"></input>
+  </view>
+  <!-- 图片 -->
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">图片</view>
+    <view class="action">{{thumbnail.length}}/4</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{thumbnail}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{thumbnail[index]}}">
+        <image style="top:0;left:0"  src='{{thumbnail[index]}}' mode='aspectFill'></image>
+        <!-- <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}"> -->
+          <!-- <text class="cuIcon-close"></text> -->
+        <!-- </view> -->
+      </view>
+      <!-- <view class="solids" bindtap="ChooseImage" wx:if="{{thumbnail.length<4}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view> -->
+    </view>
+  </view>
+</view>
+
+<button class="cu-btn block line-green " style="margin:20px 10px" bindtap="modifyBill">
+      <text class="cuIcon-add"></text> 修改账单
+    </button>
+
+

@@ -1,0 +1,48 @@
+/**app.wxss**/
+
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+
+.nav {
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+  background: #55b737;
+  display: flex;
+  position:relative;
+  /* border: 1rpx solid red */
+}
+ 
+.title_text {
+  height: 45px;
+  z-index: 10;
+  font-size: 34rpx;
+  position: absolute;
+  bottom: 0px;
+  /* border: 1rpx solid white; */
+  color:white;
+  text-align: center;
+  width: 100%;
+}
+ 
+.title_icon {
+  height: 45px;
+  line-height: 45px;
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 13px
+}
+.cu-modal{
+  z-index: 10;
+}
+
+ 
+
+ 
+.title_icon view {
+  height: 17px;
+  color: white
+}
+
+

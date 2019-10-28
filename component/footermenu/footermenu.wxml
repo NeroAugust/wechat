@@ -1,0 +1,20 @@
+<!--component/footermenu/footermenu.wxml-->
+<template name="footermenu">
+<view class="cu-bar tabbar bg-black footermenu" style="z-index:20">
+    <navigator class="action text-gray" url="/pages/index/index" open-type="redirect">
+      <view class="cuIcon-rechargefill"></view> 首页
+    </navigator>
+    <navigator class="action text-gray" url="/pages/table/table" open-type="redirect">
+      <view class="cuIcon-rank"></view> 超表
+    </navigator>
+    <navigator class="action text-gray add-action" url="/pages/post/post" open-type="redirect">
+      <button class="cu-btn cuIcon-add bg-green shadow"></button>记账
+    </navigator>
+    <navigator class="action text-gray" url="/pages/list/list" open-type="redirect">
+      <view class="cuIcon-upstage"></view>榜单
+    </navigator>
+    <navigator class="action text-gray" url="/pages/my/my" open-type="redirect">
+      <view class="cuIcon-my"></view>我的
+    </navigator>
+  </view>
+  </template>

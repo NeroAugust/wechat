@@ -1,0 +1,3 @@
+/* pages/table/table.wxss */
+@import "../../component/footermenu/footermenu.wxss";
+

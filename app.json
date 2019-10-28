@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "component/footermenu/footermenu",
+    "pages/login/login",
+    "pages/table/table",
+    "pages/settings/settings",
+    "pages/setting/setting",
+    "pages/post/post",
+    "pages/list/list",
+    "pages/my/my",
+    "pages/reg/reg",
+    "pages/addaccount/addaccount",
+    "pages/modifyaccount/modifyaccount",
+    "pages/categorysettings/categorysettings",
+    "pages/detailbill/detailbill",
+    "pages/booksetting/booksetting",
+    "pages/userinfo/userinfo"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#55b737",
+    "navigationBarTitleText": "一起记账",
+    "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxe5f52902cf4de896"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

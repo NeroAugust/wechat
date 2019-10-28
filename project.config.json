@@ -1,0 +1,154 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.4",
+	"appid": "wx61b47fb7f4a2584b",
+	"projectname": "wallet",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 13,
+			"list": [
+				{
+					"id": -1,
+					"name": "超表",
+					"pathName": "pages/table/table",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "账本设置",
+					"pathName": "pages/settings/settings",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人账本-类别设置",
+					"pathName": "pages/setting/setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "记一笔",
+					"pathName": "pages/post/post",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "影响力榜单",
+					"pathName": "pages/list/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/reg/reg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加账本",
+					"pathName": "pages/addaccount/addaccount",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "修改账本",
+					"pathName": "pages/modifyaccount/modifyaccount",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "类别设置",
+					"pathName": "pages/categorysettings/categorysettings",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "单条账单详情/修改",
+					"pathName": "pages/detailbill/detailbill",
+					"query": "zid=1785&token= 45c5123b6fc676bec47dc52320877723",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "账簿设定",
+					"pathName": "pages/booksetting/booksetting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "个人信息",
+					"pathName": "pages/userinfo/userinfo",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

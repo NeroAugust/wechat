@@ -1,0 +1,8 @@
+/* component/footermenu/footermenu.wxss */
+.footermenu{
+  position: fixed;
+  bottom: 0px;
+  width:100%;
+  background: #fff;
+  z-index: 10
+}

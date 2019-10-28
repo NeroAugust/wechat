@@ -1,0 +1,79 @@
+<!--pages/login/login.wxml-->
+<!-- 导航栏 -->
+<view class='nav' style='height:{{navH}}px'>
+  <view class='title_icon'>
+      <view mode='aspectFit' class='back' bindtap='navBack'>
+        <view class="cuIcon-back">返回
+      </view>
+    </view>
+  </view>
+  <view class='title_text'>
+    {{title_index}}
+  </view>
+</view>
+
+
+<view class="cu-form-group" style="margin-top:30px">
+		<view class="title">手机号码</view>
+		<input placeholder="请输入手机号码" bindinput="setPhoneNum"></input>
+		<view class="cu-capsule radius">
+			<view class="cu-tag bg-blue">
+				+86
+			</view>
+			<view class="cu-tag line-blue">
+				中国大陆
+			</view>
+		</view>
+	</view>
+	<view class="cu-form-group" style="margin-top:10px">
+		<view class="title">密码</view>
+		<input placeholder="请输入密码" bindinput="setPwd" type="password"></input>
+	</view>
+  <view class="cu-form-group" style="margin-top:10px">
+		<view class="title">图片验证码</view>
+    <input placeholder="请输入验证码" bindinput="setcaptcha_code" value="{{captcha_code}}"></input>
+    <image src="{{imgUrl}}" mode="aspectFit" style="width:20%;height:50px"></image>
+    <button  class="bg-green cu-btn shadow" bindtap="getCaptcha" data-target="Captcha">显示</button>
+	</view>
+    <button  class="bg-green" style="margin:15px 10px" bindtap="login" data-target="login">登录</button>
+    <view class="solids-bottom padding-xs flex align-center">
+    <view class="flex-sub text-center" bindtap="showModal" data-target="bottomModal">
+      <view class="solid-bottom text-df padding">忘记密码,去修改</view>
+    </view>
+  </view>
+<!-- 注册弹窗 -->
+<view class="cu-modal {{modalName=='login'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{modalName}}</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      {{modalContent}}
+    </view>
+  </view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green">确定</view>
+      <view class="action text-blue" bindtap="hideBottomModal">取消</view>
+    </view>
+    <view class="padding-xl">
+      <view class="cu-form-group">
+		    <view class="title">旧密码</view>
+		    <input placeholder="请输入旧密码" bindinput="setPwd" type="password" value="{{password}}" class="text-right"></input>
+	    </view>
+      <view class="cu-form-group">
+		    <view class="title">新密码</view>
+		    <input placeholder="请输入新密码" bindinput="setNewPwd" type="password" value="{{newPassword}}" class="text-right"></input>
+	    </view>
+    </view>
+  </view>
+</view>
+
+
+
